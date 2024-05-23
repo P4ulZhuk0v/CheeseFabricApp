@@ -69,5 +69,20 @@ public class RecipeController {
         return materialNames;
     }
 
+    @RequestMapping("/observe-recipes")
+    public String observeResipe(Model model){
+        model.addAttribute("cheeseNames", getAvailibleRecipesNames());
+        model.addAttribute("recipes", recipeService.findAll());
+        return "ObserveRecipe";
+    }
+
+    private Set<String> getAvailibleRecipesNames() {
+        Set<String> names = new HashSet<>();
+        for(Recipe recipe: recipeService.findAll()){
+            names.add(recipe.getCheeseName());
+        }
+        return names;
+    }
+
 
 }
