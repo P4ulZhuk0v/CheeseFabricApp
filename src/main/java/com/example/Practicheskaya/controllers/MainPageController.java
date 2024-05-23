@@ -66,7 +66,12 @@ public class MainPageController {
 
 
     @GetMapping("/add-recipe")
-    public RedirectView addRecipe(Model model){
+    public RedirectView addRecipe(){
         return new RedirectView("/recipes/add-recipe");
+    }
+
+    @GetMapping("/observe-recipes")
+    public RedirectView observeRecipes(){
+        return new RedirectView("/recipes/observe-recipes");
     }
 }

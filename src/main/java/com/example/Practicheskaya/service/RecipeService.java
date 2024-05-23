@@ -6,6 +6,8 @@ import com.example.Practicheskaya.entity.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RecipeService {
 
@@ -15,4 +17,6 @@ public class RecipeService {
     public void save(Recipe recipe) {
         recipeDAO.save(recipe);
     }
+
+    public List<Recipe> findAll(){return recipeDAO.findAll();}
 }
