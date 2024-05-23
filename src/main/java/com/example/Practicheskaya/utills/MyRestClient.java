@@ -1,7 +1,6 @@
 package com.example.Practicheskaya.utills;
 
 import com.example.Practicheskaya.exeptions.ConnectionFailedExeption;
-import lombok.Getter;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
@@ -16,8 +15,10 @@ public class MyRestClient {
 
     private RestClient restClient;
 
+    public Map<String, Double> getMatches() {
+        return matches;
+    }
 
-    @Getter
     private Map<String, Double> matches;
     private String body;
 

@@ -2,11 +2,9 @@ package com.example.Practicheskaya.entity;
 
 import com.example.Practicheskaya.utills.DateParser;
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
 @Table(name = "cheese")
-@Data
 public class Cheese {
 
 
@@ -36,7 +34,35 @@ public class Cheese {
     }
 
 
+    public String getCheeseName() {
+        return cheeseName;
+    }
 
+    public void setCheeseName(String cheeseName) {
+        this.cheeseName = cheeseName;
+    }
 
+    public int getPrice() {
+        return price;
+    }
 
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(long amount) {
+        this.amount = amount;
+    }
+
+    public String getDateOfProducing() {
+        return dateOfProducing;
+    }
+
+    public void setDateOfProducing(String dateOfProducing) {
+        this.dateOfProducing = dateOfProducing;
+    }
 }

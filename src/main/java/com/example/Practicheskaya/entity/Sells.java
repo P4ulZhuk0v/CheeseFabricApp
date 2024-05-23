@@ -2,14 +2,11 @@ package com.example.Practicheskaya.entity;
 
 import com.example.Practicheskaya.utills.DateParser;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name="sells")
-@Data
 public class Sells {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,4 +29,25 @@ public class Sells {
     }
 
     public Sells(){}
+
+
+    public String getCheeseName() {
+        return cheeseName;
+    }
+
+    public void setCheeseName(String cheeseName) {
+        this.cheeseName = cheeseName;
+    }
+
+    public int getAmountOfSells() {
+        return amountOfSells;
+    }
+
+    public void setAmountOfSells(int amountOfSells) {
+        this.amountOfSells = amountOfSells;
+    }
+
+    public String getDate() {
+        return date;
+    }
 }

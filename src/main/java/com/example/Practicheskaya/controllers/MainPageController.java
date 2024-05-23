@@ -2,6 +2,7 @@ package com.example.Practicheskaya.controllers;
 
 import com.example.Practicheskaya.entity.Cheese;
 import com.example.Practicheskaya.entity.Material;
+import com.example.Practicheskaya.entity.Recipe;
 import com.example.Practicheskaya.entity.Sells;
 import com.example.Practicheskaya.service.CheeseService;
 import com.example.Practicheskaya.utills.СurrencyConverter;
@@ -13,10 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -63,4 +64,9 @@ public class MainPageController {
         return new RedirectView("/sells/add-sell");
     }
 
+
+    @GetMapping("/add-recipe")
+    public RedirectView addRecipe(Model model){
+        return new RedirectView("/recipes/add-recipe");
+    }
 }
