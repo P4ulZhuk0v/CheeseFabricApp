@@ -20,7 +20,7 @@ public class Sells {
     private int amountOfSells;
 
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "date")
     private String date;
 
     @PrePersist
@@ -49,5 +49,9 @@ public class Sells {
 
     public String getDate() {
         return date;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

@@ -9,7 +9,6 @@
 
 <form:form action="cheese-added" method="post" modelAttribute="cheese">
     Cheese name: <form:input path="cheeseName"/><br>
-    Cheese price: <form:input path="price"/><br>
     Cheese amount: <form:input path="amount"/><br>
     <input type="submit" value="Send">
 </form:form>

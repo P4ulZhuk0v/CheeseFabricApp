@@ -5,6 +5,8 @@
     <title>Observe Recipe</title>
 </head>
 <body>
+<h1>Observe cheese's recipes
+</h1>
 
 <c:forEach var="name" items="${cheeseNames}">
     <table>
@@ -23,6 +25,10 @@
         </tbody>
     </table>
 </c:forEach>
+
+<form method="post" action="add-recipe">
+    <input type="submit" value="Add recipe">
+</form>
 
 
 </body>

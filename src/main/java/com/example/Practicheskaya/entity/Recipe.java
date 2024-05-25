@@ -46,4 +46,8 @@ public class Recipe {
     public void setAmountOfMaterialRequired(int amountOfMaterialRequired) {
         this.amountOfMaterialRequired = amountOfMaterialRequired;
     }
+
+    public Long getId() {
+        return id;
+    }
 }

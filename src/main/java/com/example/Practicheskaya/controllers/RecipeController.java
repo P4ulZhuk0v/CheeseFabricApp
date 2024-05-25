@@ -9,6 +9,7 @@ import com.example.Practicheskaya.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,9 +39,9 @@ public class RecipeController {
         //добавить recipe, cheesename, materialname
         model.addAttribute("recipe", new Recipe());
 
-        model.addAttribute("cheeseNames", getCheeseNames());
+        model.addAttribute("cheeseNames", cheeseService.getCheeseNames());
 
-        model.addAttribute("materialsNames", getMaterialsNames());
+        model.addAttribute("materialsNames", materialsService.getMaterialsNames());
         return "AddRecipe";
     }
 
@@ -52,36 +53,11 @@ public class RecipeController {
         return new RedirectView("/shop/stats");
     }
 
-
-    private Set<String> getCheeseNames(){
-        Set<String> cheeseNames = new HashSet<>();
-        for(Cheese cheese: cheeseService.getAllCheese()){
-            cheeseNames.add(cheese.getCheeseName());
-        }
-        return cheeseNames;
-    }
-
-    private Set<String> getMaterialsNames(){
-        Set<String> materialNames = new HashSet<>();
-        for(Material material: materialsService.getAllMaterials()){
-            materialNames.add(material.getName());
-        }
-        return materialNames;
-    }
-
     @RequestMapping("/observe-recipes")
     public String observeResipe(Model model){
-        model.addAttribute("cheeseNames", getAvailibleRecipesNames());
+        model.addAttribute("cheeseNames", recipeService.getAvailibleRecipesNames());
         model.addAttribute("recipes", recipeService.findAll());
         return "ObserveRecipe";
-    }
-
-    private Set<String> getAvailibleRecipesNames() {
-        Set<String> names = new HashSet<>();
-        for(Recipe recipe: recipeService.findAll()){
-            names.add(recipe.getCheeseName());
-        }
-        return names;
     }
 
 

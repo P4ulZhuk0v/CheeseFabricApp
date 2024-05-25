@@ -15,6 +15,7 @@
     <table class="cheese">
         <tbody>
         <tr>
+            <th>Id: </th>
             <th>Name:</th>
             <th>Price:</th>
             <th>Amount:</th>
@@ -23,6 +24,8 @@
 
         <c:forEach var="myCheese" items="${cheese}">
             <tr>
+<%--Убрать возможность ввода цены напрямую, так как она будет вычисляться чарез markup--%>
+                <td>${myCheese.id}</td>
                 <td>${myCheese.cheeseName}</td>
                 <td>${myCheese.price}</td>
                 <td>${myCheese.amount}</td>
@@ -43,6 +46,7 @@
     <table class="mymaterials">
         <tbody>
         <tr>
+            <th>Id: </th>
             <th>Name:</th>
             <th>Buy price:</th>
             <th>Amount left:</th>
@@ -50,6 +54,7 @@
         </tr>
         <c:forEach var="material" items="${materials}">
             <tr>
+                <td>${material.id}</td>
                 <td>${material.name}</td>
                 <td>${material.price}</td>
                 <td>${material.amount}</td>
@@ -68,12 +73,14 @@
     <table class="mysells">
         <tbody>
         <tr>
+            <th>Id: </th>
             <th>Name:</th>
             <th>Amount of sells:</th>
             <th>Date: </th>
         </tr>
         <c:forEach var="sell" items="${sells}">
             <tr>
+                <td>${sell.id}</td>
                 <td>${sell.cheeseName}</td>
                 <td>${sell.amountOfSells}</td>
                 <td>${sell.date}</td>
@@ -83,8 +90,11 @@
     </table>
     <form method="post" action="add-sell">
         <input type="submit" value="Sell">
-    </form>
+    </form>  <br>
 </div>
 <hr>
+<form method="post" action="observe-recipes">
+    <input type="submit" value="Observe">
+</form>
 </body>
 </html>

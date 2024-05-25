@@ -6,7 +6,9 @@ import com.example.Practicheskaya.entity.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class RecipeService {
@@ -19,4 +21,12 @@ public class RecipeService {
     }
 
     public List<Recipe> findAll(){return recipeDAO.findAll();}
+
+    public Set<String> getAvailibleRecipesNames() {
+        Set<String> names = new HashSet<>();
+        for(Recipe recipe: findAll()){
+            names.add(recipe.getCheeseName());
+        }
+        return names;
+    }
 }

@@ -9,7 +9,7 @@
 
 <form:form action="sell-added" method="post" modelAttribute="sell">
     Cheese name: <form:input path="cheeseName"/><br>
-    Cheese price: <form:input path="amountOfSells"/><br>
+    Amount of sells: <form:input path="amountOfSells"/><br>
     <input type="submit" value="Send">
 </form:form>
 

@@ -22,13 +22,14 @@ public class Material {
     @Column(name = "currencyName")
     private String currencyName;
 
+    @Column(name = "rub_price")
+    private int rub_price;
+
     @Column(name = "date")
     private String date;
 
     @Column(name="amount")
     private long amount;
-
-
 
     @PrePersist
     public void persist(){
@@ -76,5 +77,9 @@ public class Material {
 
     public void setAmount(long amount) {
         this.amount = amount;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

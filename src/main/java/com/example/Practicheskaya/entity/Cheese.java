@@ -2,6 +2,9 @@ package com.example.Practicheskaya.entity;
 
 import com.example.Practicheskaya.utills.DateParser;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "cheese")
@@ -64,5 +67,9 @@ public class Cheese {
 
     public void setDateOfProducing(String dateOfProducing) {
         this.dateOfProducing = dateOfProducing;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
