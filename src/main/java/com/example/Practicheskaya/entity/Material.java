@@ -20,14 +20,22 @@ public class Material {
     private String name;
 
     @Column(name = "price")
-    @Min(value = 1, message = "Введите положительное целое число")
+    @Min(value = 1, message = "Введите положительное число")
     private int price;
 
     @Column(name = "currencyName")
     private String currencyName;
 
+    public Double getRub_price() {
+        return rub_price;
+    }
+
+    public void setRub_price(Double rub_price) {
+        this.rub_price = rub_price;
+    }
+
     @Column(name = "rub_price")
-    private int rub_price;
+    private Double rub_price;
 
     @Column(name = "date")
     private String date;

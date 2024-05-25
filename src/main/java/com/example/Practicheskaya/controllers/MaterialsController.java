@@ -1,5 +1,7 @@
 package com.example.Practicheskaya.controllers;
 
+import com.example.Practicheskaya.utills.DateParser;
+import com.example.Practicheskaya.utills.СurrencyConverter;
 import com.example.Practicheskaya.utills.MyRestClient;
 import com.example.Practicheskaya.entity.Material;
 import com.example.Practicheskaya.service.MaterialsService;
@@ -27,6 +29,8 @@ public class MaterialsController {
     @Autowired
     private MaterialsService materialsService;
 
+    @Autowired
+    private com.example.Practicheskaya.utills.СurrencyConverter converter;
 
     private Set<String> currencies;
 
@@ -40,7 +44,7 @@ public class MaterialsController {
 
     private Set<String> parseForSelectForm() {
         if(currencies==null) {
-            currencies = myRestClient.getConnection("").findOnSiteByPattern().keySet();
+            currencies = myRestClient.getConnection(DateParser.getLocalDate()).findOnSiteByPattern().keySet();
         }
         return currencies;
     }
@@ -51,7 +55,8 @@ public class MaterialsController {
             model.addAttribute("currencies", parseForSelectForm());
             return "AddMaterialPage";
         }
-        materialsService.save(material);
+
+        materialsService.save(converter.parseCurrencyInMaterial(material));
         return "redirect:/shop/stats";
     }
 

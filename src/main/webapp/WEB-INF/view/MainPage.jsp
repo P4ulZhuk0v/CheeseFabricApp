@@ -49,6 +49,8 @@
             <th>Id: </th>
             <th>Name:</th>
             <th>Buy price:</th>
+            <th>Currency name: </th>
+            <th>Rub price: </th>
             <th>Amount left:</th>
             <th>Date:</th>
         </tr>
@@ -57,6 +59,8 @@
                 <td>${material.id}</td>
                 <td>${material.name}</td>
                 <td>${material.price}</td>
+                <td>${material.currencyName}</td>
+                <td>${material.rub_price}</td>
                 <td>${material.amount}</td>
                 <td>${material.date}</td>
             </tr>

@@ -29,7 +29,6 @@ public class MyRestClient {
         }else{
             restClient = RestClient.builder().baseUrl("https://www.cbr.ru/currency_base/daily").build();
         }
-
         body = restClient.get().retrieve().body(new ParameterizedTypeReference<String>() {});
         if(body == null){
             try {
@@ -41,23 +40,21 @@ public class MyRestClient {
         return this;
     }
 
+
+
     public Map<String, Double> findOnSiteByPattern(){//(String pattern){
         matches = new HashMap<>();
-        Pattern patternOfName = Pattern.compile("<td>[а-яА-Я ]+</td>");
-        Matcher matcherOfName = patternOfName.matcher(body);
-        Pattern patternOfValue = Pattern.compile("<td>\\d+,\\d+</td>");
-        Matcher matcherOfValue = patternOfValue.matcher(body);
+        Pattern pattern = Pattern.compile("<td>[а-яА-Я ]+</td>(\\s|\\n)*<td>\\d+,\\d+</td>");
+        Matcher matcher = pattern.matcher(body);
 
-        while(matcherOfValue.find() && matcherOfName.find()){
-            String name = matcherOfName.group();
-            String value = matcherOfValue.group();
+        while(matcher.find()){
+            String[] currentLine = matcher.group().split("</td>(\\s|\\n)*<td>");
 
-            name = name.substring(4, name.length()-5);
-            value = value.substring(4, value.length()-5).replace(',', '.');
+            String name = currentLine[0].replace("<td>", "");
+            String value = currentLine[1].replace("</td>", "").replace(',', '.');
             Double doubleValue = Double.parseDouble(value);
             matches.put(name, doubleValue);
         }
-
         return matches;
     }
 }
