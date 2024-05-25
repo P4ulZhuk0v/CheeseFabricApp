@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>MainPage</title>
+    <title>Your shop</title>
 </head>
 <body>
 <div>

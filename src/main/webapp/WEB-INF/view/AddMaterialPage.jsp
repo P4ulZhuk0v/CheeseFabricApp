@@ -9,11 +9,11 @@
 <h1>Please, enter a data u want to save about material</h1>
 
 <form:form action="material-added" method="post" modelAttribute="material">
-    Material name: <form:input path="name"/><br>
-    Material price: <form:input path="price"/><br>
+    Material name: <form:input path="name"/><form:errors path="name"/><br>
+    Material price: <form:input path="price"/><form:errors path="price"/><br>
     Price currency: <form:select path="currencyName" items="${currencies}">
     </form:select><br>
-    Material amount: <form:input path="amount"/><br>
+    Material amount: <form:input path="amount"/><form:errors path="amount"/><br>
     <input type="submit" value="Send">
 </form:form>
 </body>

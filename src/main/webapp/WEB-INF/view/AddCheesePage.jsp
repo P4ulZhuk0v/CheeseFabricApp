@@ -8,8 +8,8 @@
 <h1>Please, enter a data u want to save about cheese</h1>
 
 <form:form action="cheese-added" method="post" modelAttribute="cheese">
-    Cheese name: <form:input path="cheeseName"/><br>
-    Cheese amount: <form:input path="amount"/><br>
+    Cheese name: <form:input path="cheeseName"/><form:errors path="cheeseName"/> <br>
+    Cheese amount: <form:input path="amount"/><form:errors path="amount"/><br>
     <input type="submit" value="Send">
 </form:form>
 </body>

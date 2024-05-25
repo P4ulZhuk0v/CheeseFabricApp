@@ -2,6 +2,7 @@ package com.example.Practicheskaya.entity;
 
 import com.example.Practicheskaya.utills.DateParser;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -17,12 +18,14 @@ public class Cheese {
     private Long id;
 
     @Column(name = "cheese_name")
+    @Pattern(regexp = "[а-яА-Я ]+", message = "Имя не дожно содержать символов кроме русских букв и пробелов")
     private String cheeseName;
 
     @Column(name = "price")
     private int price;
 
     @Column(name = "amount")
+    @Min(value = 1, message = "Введите положительное целое число")
     private long amount;
 
     @Column(name="date")

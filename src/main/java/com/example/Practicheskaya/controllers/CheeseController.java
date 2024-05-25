@@ -27,7 +27,10 @@ public class CheeseController {
     }
 
     @PostMapping("/cheese-added")
-    public String redirectOnMainPage(@ModelAttribute(name="cheese") Cheese cheese){
+    public String redirectOnMainPage(@Valid @ModelAttribute(name="cheese") Cheese cheese, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "AddCheesePage";
+        }
         cheeseService.addCheese(cheese);
         return "redirect:/shop/stats";
     }

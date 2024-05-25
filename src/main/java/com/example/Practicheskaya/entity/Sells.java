@@ -2,6 +2,8 @@ package com.example.Practicheskaya.entity;
 
 import com.example.Practicheskaya.utills.DateParser;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
 
 import java.time.LocalDateTime;
 
@@ -17,8 +19,8 @@ public class Sells {
     private String cheeseName;
 
     @Column(name = "amount_of_sells")
+    @Min(value = 1, message = "Введите положительное целое число")
     private int amountOfSells;
-
 
     @Column(name = "date")
     private String date;

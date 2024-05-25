@@ -3,6 +3,8 @@ package com.example.Practicheskaya.entity;
 
 import com.example.Practicheskaya.utills.DateParser;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "materials")
@@ -14,9 +16,11 @@ public class Material {
     private Long id;
 
     @Column(name = "name")
+    @Pattern(regexp = "[а-яА-Я ]+", message = "Имя не дожно содержать символов кроме русских букв и пробелов")
     private String name;
 
     @Column(name = "price")
+    @Min(value = 1, message = "Введите положительное целое число")
     private int price;
 
     @Column(name = "currencyName")
@@ -29,6 +33,7 @@ public class Material {
     private String date;
 
     @Column(name="amount")
+    @Min(value = 1, message = "Введите положительное целое число")
     private long amount;
 
     @PrePersist

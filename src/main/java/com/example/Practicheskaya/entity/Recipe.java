@@ -1,6 +1,8 @@
 package com.example.Practicheskaya.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
 
 
 @Entity
@@ -19,6 +21,7 @@ public class Recipe {
     private String materialName;
 
     @Column(name="amount_of_material")
+    @Min(value = 1, message = "Введите положительное целое число")
     private int amountOfMaterialRequired;
 
     public Recipe() {}
