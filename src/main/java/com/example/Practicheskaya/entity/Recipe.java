@@ -15,6 +15,7 @@ public class Recipe {
     private Long id;
 
     @Column(name="cheese_name")
+    @Pattern(regexp = "[а-яА-я ]+", message = "Имя не дожно содержать символов кроме русских букв и пробелов")
     private String cheeseName;
 
     @Column(name="material_name")

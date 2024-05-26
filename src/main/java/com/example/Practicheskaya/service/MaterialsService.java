@@ -34,4 +34,12 @@ public class MaterialsService {
         }
         return materialNames;
     }
+
+    public List<Material> getMaterialsByNameOrderById(String key) {
+        return materialsDAO.findAllByNameOrderById(key);
+    }
+
+    public void delete(Material material){
+        materialsDAO.delete(material);
+    }
 }

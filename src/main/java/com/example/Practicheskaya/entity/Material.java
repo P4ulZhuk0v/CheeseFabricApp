@@ -42,7 +42,7 @@ public class Material {
 
     @Column(name="amount")
     @Min(value = 1, message = "Введите положительное целое число")
-    private long amount;
+    private int amount;
 
     @PrePersist
     public void persist(){
@@ -84,11 +84,11 @@ public class Material {
         this.date = date;
     }
 
-    public long getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(long amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 

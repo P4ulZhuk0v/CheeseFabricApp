@@ -38,10 +38,7 @@ public class RecipeController {
 
     @RequestMapping("/add-recipe")
     public String addRecipe(Model model){
-        //добавить recipe, cheesename, materialname
         model.addAttribute("recipe", new Recipe());
-
-        model.addAttribute("cheeseNames", cheeseService.getCheeseNames());
 
         model.addAttribute("materialsNames", materialsService.getMaterialsNames());
         return "AddRecipe";
@@ -52,7 +49,6 @@ public class RecipeController {
     @PostMapping("/recipe-added")
     public String recipeAdded(@Valid @ModelAttribute(name="recipe") Recipe recipe, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
-            model.addAttribute("cheeseNames", cheeseService.getCheeseNames());
             model.addAttribute("materialsNames", materialsService.getMaterialsNames());
             return "AddRecipe";
         }

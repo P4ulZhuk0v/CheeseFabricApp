@@ -18,15 +18,14 @@ public class Cheese {
     private Long id;
 
     @Column(name = "cheese_name")
-    @Pattern(regexp = "[а-яА-Я ]+", message = "Имя не дожно содержать символов кроме русских букв и пробелов")
     private String cheeseName;
 
     @Column(name = "price")
-    private int price;
+    private double price;
 
     @Column(name = "amount")
     @Min(value = 1, message = "Введите положительное целое число")
-    private long amount;
+    private int amount;
 
     @Column(name="date")
     private String dateOfProducing;
@@ -48,19 +47,19 @@ public class Cheese {
         this.cheeseName = cheeseName;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public long getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(long amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 

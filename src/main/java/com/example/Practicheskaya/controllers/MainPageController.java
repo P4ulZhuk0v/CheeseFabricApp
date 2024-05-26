@@ -2,10 +2,8 @@ package com.example.Practicheskaya.controllers;
 
 import com.example.Practicheskaya.entity.Cheese;
 import com.example.Practicheskaya.entity.Material;
-import com.example.Practicheskaya.entity.Recipe;
 import com.example.Practicheskaya.entity.Sells;
 import com.example.Practicheskaya.service.CheeseService;
-import com.example.Practicheskaya.utills.СurrencyConverter;
 import com.example.Practicheskaya.service.MaterialsService;
 import com.example.Practicheskaya.service.SellsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller

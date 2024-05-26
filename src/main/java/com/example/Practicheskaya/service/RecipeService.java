@@ -29,4 +29,8 @@ public class RecipeService {
         }
         return names;
     }
+
+    public List<Recipe> findAllByCheeseName(String cheeseName){
+        return recipeDAO.findAllByCheeseName(cheeseName);
+    }
 }

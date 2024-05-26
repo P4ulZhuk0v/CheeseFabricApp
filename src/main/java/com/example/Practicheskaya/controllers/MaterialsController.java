@@ -1,7 +1,7 @@
 package com.example.Practicheskaya.controllers;
 
+import com.example.Practicheskaya.utills.CurrencyConverter;
 import com.example.Practicheskaya.utills.DateParser;
-import com.example.Practicheskaya.utills.СurrencyConverter;
 import com.example.Practicheskaya.utills.MyRestClient;
 import com.example.Practicheskaya.entity.Material;
 import com.example.Practicheskaya.service.MaterialsService;
@@ -13,8 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.*;
 
@@ -29,8 +27,9 @@ public class MaterialsController {
     @Autowired
     private MaterialsService materialsService;
 
+
     @Autowired
-    private com.example.Practicheskaya.utills.СurrencyConverter converter;
+    private CurrencyConverter currencyConverter;
 
     private Set<String> currencies;
 
@@ -56,7 +55,7 @@ public class MaterialsController {
             return "AddMaterialPage";
         }
 
-        materialsService.save(converter.parseCurrencyInMaterial(material));
+        materialsService.save(currencyConverter.parseCurrencyInMaterial(material));
         return "redirect:/shop/stats";
     }
 

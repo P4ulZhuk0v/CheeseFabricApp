@@ -14,14 +14,14 @@
         <h3>Cheese Name: ${name}</h3>
         <th>Name:</th>
         <th>Amount:</th>
-        <tr>
             <c:forEach var="recipe" items="${recipes}">
+        <tr>
                 <c:if test="${recipe.cheeseName == name}">
                     <td>${recipe.materialName}</td>
                     <td>${recipe.amountOfMaterialRequired}</td>
                 </c:if>
-            </c:forEach>
         </tr>
+            </c:forEach>
         </tbody>
     </table>
 </c:forEach>

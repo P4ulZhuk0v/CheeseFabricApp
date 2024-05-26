@@ -44,16 +44,17 @@ public class MyRestClient {
 
     public Map<String, Double> findOnSiteByPattern(){//(String pattern){
         matches = new HashMap<>();
-        Pattern pattern = Pattern.compile("<td>[а-яА-Я ]+</td>(\\s|\\n)*<td>\\d+,\\d+</td>");
+        Pattern pattern = Pattern.compile("<td>\\d+</td>(\\s|\\n)*<td>[а-яА-Я ]+</td>(\\s|\\n)*<td>\\d+,\\d+</td>");
         Matcher matcher = pattern.matcher(body);
 
         while(matcher.find()){
             String[] currentLine = matcher.group().split("</td>(\\s|\\n)*<td>");
-
-            String name = currentLine[0].replace("<td>", "");
-            String value = currentLine[1].replace("</td>", "").replace(',', '.');
-            Double doubleValue = Double.parseDouble(value);
-            matches.put(name, doubleValue);
+            String amount = currentLine[0].replace("<td>", "");
+            String name = currentLine[1];
+            String value = currentLine[2].replace("</td>", "").replace(',', '.');
+            double doubleValue = Double.parseDouble(value);
+            double doubleAmount = Double.parseDouble(amount);
+            matches.put(name, (double) doubleValue/doubleAmount);
         }
         return matches;
     }
