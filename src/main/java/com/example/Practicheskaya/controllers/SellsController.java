@@ -3,6 +3,7 @@ package com.example.Practicheskaya.controllers;
 import com.example.Practicheskaya.entity.Sells;
 import com.example.Practicheskaya.service.CheeseService;
 import com.example.Practicheskaya.service.SellsService;
+import com.example.Practicheskaya.utills.SellCheese;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,9 @@ public class SellsController {
     @Autowired
     private CheeseService cheeseService;
 
+    @Autowired
+    private SellCheese sellCheese;
+
     @RequestMapping("/add-sell")
     public String addSell(Model model){
         model.addAttribute("cheeseNames", cheeseService.getCheeseNames());
@@ -33,10 +37,12 @@ public class SellsController {
 
     @PostMapping("/sell-added")
     public String sellAdded(@Valid @ModelAttribute("sell") Sells sells, BindingResult bindingResult, Model model){
-        if(bindingResult.hasErrors()){
+        double fullPrice;
+        if(bindingResult.hasErrors()|| (fullPrice = sellCheese.sellCheese(sells.getCheeseName(), sells.getAmountOfSells()))==0D){
             model.addAttribute("cheeseNames", cheeseService.getCheeseNames());
             return "AddSellsPage";
         }
+        sells.setPrice(fullPrice);
         sellsService.saveSells(sells);
         return "redirect:/shop/stats";
     }

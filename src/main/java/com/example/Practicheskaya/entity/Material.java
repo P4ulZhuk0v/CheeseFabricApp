@@ -16,7 +16,7 @@ public class Material {
     private Long id;
 
     @Column(name = "name")
-    @Pattern(regexp = "[а-яА-Я ]+", message = "Имя не дожно содержать символов кроме русских букв и пробелов")
+    @Pattern(regexp = "[а-яА-Я0-9%\\-_ ]+", message = "Имя не дожно содержать символов кроме русских букв и пробелов")
     private String name;
 
     @Column(name = "price")
@@ -25,14 +25,6 @@ public class Material {
 
     @Column(name = "currencyName")
     private String currencyName;
-
-    public Double getRub_price() {
-        return rub_price;
-    }
-
-    public void setRub_price(Double rub_price) {
-        this.rub_price = rub_price;
-    }
 
     @Column(name = "rub_price")
     private Double rub_price;
@@ -94,5 +86,13 @@ public class Material {
 
     public Long getId() {
         return id;
+    }
+
+    public Double getRub_price() {
+        return rub_price;
+    }
+
+    public void setRub_price(Double rub_price) {
+        this.rub_price = rub_price;
     }
 }

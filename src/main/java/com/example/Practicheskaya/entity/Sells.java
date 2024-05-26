@@ -22,6 +22,8 @@ public class Sells {
     @Min(value = 1, message = "Введите положительное целое число")
     private int amountOfSells;
 
+    @Column(name = "price")
+    private Double price;
     @Column(name = "date")
     private String date;
 
@@ -55,5 +57,16 @@ public class Sells {
 
     public Long getId() {
         return id;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+    public void setDate(String date) {
+        this.date = date;
     }
 }

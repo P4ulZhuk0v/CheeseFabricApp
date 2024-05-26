@@ -28,8 +28,8 @@ public class CheeseService {
         return cheeseDAO.findAll();
     }
 
-    public void deleteCheese(String cheeseName){
-        cheeseDAO.deleteByCheeseName(cheeseName);
+    public void deleteCheese(Cheese cheese){
+        cheeseDAO.delete(cheese);
     }
 
     public Set<String> getCheeseNames(){
@@ -38,5 +38,9 @@ public class CheeseService {
             cheeseNames.add(cheese.getCheeseName());
         }
         return cheeseNames;
+    }
+
+    public List<Cheese> getAllByCheeseNameOrderById(String cheeseName){
+        return cheeseDAO.findAllByCheeseNameOrderById(cheeseName);
     }
 }

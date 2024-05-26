@@ -80,6 +80,7 @@
             <th>Id: </th>
             <th>Name:</th>
             <th>Amount of sells:</th>
+            <th>Price: </th>
             <th>Date: </th>
         </tr>
         <c:forEach var="sell" items="${sells}">
@@ -87,6 +88,7 @@
                 <td>${sell.id}</td>
                 <td>${sell.cheeseName}</td>
                 <td>${sell.amountOfSells}</td>
+                <td>${sell.price}</td>
                 <td>${sell.date}</td>
             </tr>
         </c:forEach>
