@@ -11,14 +11,14 @@ public class DispatcherServlet extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[] {MainPageController.class, MaterialsController.class, MarkUpController.class, SellsController.class, CheeseController.class};
+        return new Class[] {MainPageController.class, MaterialsController.class, SellsController.class, CheeseController.class};
     }
 
 //    , MaterialsController.class, MarkUpController.class, SellsController.class
 
     @Override
     protected String[] getServletMappings() {
-        return new String[] {"/shop/**", "/materials/**", "/markup/**", "/sells/**, /cheese/**"};
+        return new String[] {"/shop/**", "/materials/**", "/sells/**, /cheese/**"};
     }
 
 //    , "/materials", "/markup", "/sells

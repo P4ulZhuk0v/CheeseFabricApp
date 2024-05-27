@@ -2,10 +2,7 @@ package com.example.Practicheskaya.entity;
 
 import com.example.Practicheskaya.utills.DateParser;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "cheese")
@@ -22,6 +19,14 @@ public class Cheese {
 
     @Column(name = "price")
     private double price;
+
+    @Column(name="markUp")
+    @Min(value = 0, message = "Please, enter value between 0 and 100")
+    @Max(value = 100, message = "Please, enter value between 0 and 100")
+    private int markUp;
+
+    @Column(name="markUpPrice")
+    private Double markUpPrice;
 
     @Column(name = "amount")
     @Min(value = 1, message = "Введите положительное целое число")
@@ -71,7 +76,25 @@ public class Cheese {
         this.dateOfProducing = dateOfProducing;
     }
 
+    public int getMarkUp() {
+        return markUp;
+    }
+
+    public void setMarkUp(int markUp) {
+        this.markUp = markUp;
+    }
+
+    public Double getMarkUpPrice() {
+        return markUpPrice;
+    }
+
+    public void setMarkUpPrice(Double markUpPrice) {
+        this.markUpPrice = markUpPrice;
+    }
+
     public Long getId() {
         return id;
     }
+
+
 }

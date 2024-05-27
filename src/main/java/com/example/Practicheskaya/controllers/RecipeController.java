@@ -39,7 +39,6 @@ public class RecipeController {
     @RequestMapping("/add-recipe")
     public String addRecipe(Model model){
         model.addAttribute("recipe", new Recipe());
-
         model.addAttribute("materialsNames", materialsService.getMaterialsNames());
         return "AddRecipe";
     }
@@ -48,10 +47,17 @@ public class RecipeController {
 
     @PostMapping("/recipe-added")
     public String recipeAdded(@Valid @ModelAttribute(name="recipe") Recipe recipe, BindingResult bindingResult, Model model){
-        if(bindingResult.hasErrors()){
+        boolean isPresent = false;
+        for(Recipe recipe1: recipeService.findAllByCheeseName(recipe.getCheeseName())){
+            if(recipe1.getMaterialName().equals(recipe.getMaterialName())){
+                isPresent=true;
+            }
+        }
+        if(bindingResult.hasErrors()||isPresent){
             model.addAttribute("materialsNames", materialsService.getMaterialsNames());
             return "AddRecipe";
         }
+
         recipeService.save(recipe);
         return "redirect:/shop/stats";
     }

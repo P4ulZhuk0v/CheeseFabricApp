@@ -15,11 +15,13 @@
     <table class="cheese">
         <tbody>
         <tr>
-            <th>Id: </th>
-            <th>Name:</th>
-            <th>Price:</th>
-            <th>Amount:</th>
-            <th>Date:</th>
+            <th>Id:                </th>
+            <th>Name:              </th>
+            <th>Price:             </th>
+            <th>Markup percentage: </th>
+            <th>Markup price:      </th>
+            <th>Amount:            </th>
+            <th>Date:              </th>
         </tr>
 
         <c:forEach var="myCheese" items="${cheese}">
@@ -28,6 +30,8 @@
                 <td>${myCheese.id}</td>
                 <td>${myCheese.cheeseName}</td>
                 <td>${myCheese.price}</td>
+                <td>${myCheese.markUp}</td>
+                <td>${myCheese.markUpPrice}</td>
                 <td>${myCheese.amount}</td>
                 <td>${myCheese.dateOfProducing}</td>
             </tr>

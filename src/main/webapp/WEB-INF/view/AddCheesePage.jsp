@@ -10,6 +10,7 @@
 <form:form action="cheese-added" method="post" modelAttribute="cheese">
     Cheese name: <form:select path="cheeseName" items="${recipes}"/><br>
     Cheese amount: <form:input path="amount"/><form:errors path="amount"/><br>
+    Cheese markup: <form:input path="markUp"/><form:errors path="markUp"/><br>
     <input type="submit" value="Send">
 </form:form>
 </body>

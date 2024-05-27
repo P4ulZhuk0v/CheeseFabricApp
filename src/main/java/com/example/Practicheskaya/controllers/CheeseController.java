@@ -4,6 +4,7 @@ import com.example.Practicheskaya.entity.Cheese;
 import com.example.Practicheskaya.service.CheeseService;
 import com.example.Practicheskaya.service.RecipeService;
 import com.example.Practicheskaya.utills.CheeseFromMaterials;
+import com.example.Practicheskaya.utills.MarkUpMaker;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,8 @@ public class CheeseController {
     @Autowired
     private RecipeService recipeService;
 
+    @Autowired
+    private MarkUpMaker markUpMaker;
     @RequestMapping("/add-cheese")
     public String addCheese(Model model){
         model.addAttribute("recipes", recipeService.getAvailibleRecipesNames());
@@ -42,6 +45,7 @@ public class CheeseController {
             return "AddCheesePage";
         }
         cheese.setPrice(rub_price);
+        cheese.setMarkUpPrice(markUpMaker.makeMarkup(rub_price, cheese.getMarkUp()));
         cheeseService.addCheese(cheese);
         return "redirect:/shop/stats";
     }
