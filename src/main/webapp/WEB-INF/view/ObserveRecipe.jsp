@@ -30,6 +30,10 @@
     <input type="submit" value="Add recipe">
 </form>
 
+<form method="post" action="delete-recipe">
+    <input type="submit" value="Delete recipe">
+</form>
+
 
 </body>
 </html>

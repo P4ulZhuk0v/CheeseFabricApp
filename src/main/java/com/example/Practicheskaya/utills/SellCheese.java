@@ -28,7 +28,11 @@ public class SellCheese {
                 toDelete.add(cheese);
             }else{
                 cheese.setAmount(cheese.getAmount() - cheeseAmount);
-                fullPrice+=cheeseAmount*cheese.getPrice();
+                if(cheese.getMarkUpPrice()==null){
+                    fullPrice+=cheeseAmount*cheese.getPrice();
+                }else{
+                    fullPrice+=cheeseAmount*cheese.getMarkUpPrice();
+                }
                 cheeseService.addCheese(cheese);
                 cheeseAmount=0;
 
@@ -38,7 +42,11 @@ public class SellCheese {
         if(cheeseAmount==0){
             for(Cheese cheese: toDelete){
                 cheeseService.deleteCheese(cheese);
-                fullPrice+=cheese.getAmount()*cheese.getPrice();
+                if(cheese.getMarkUpPrice()==null){
+                    fullPrice+=cheese.getAmount()*cheese.getPrice();
+                }else{
+                    fullPrice+=cheese.getAmount()*cheese.getMarkUpPrice();
+                }
             }
             return fullPrice;
         } else{

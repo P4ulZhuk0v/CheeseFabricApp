@@ -33,4 +33,8 @@ public class RecipeService {
     public List<Recipe> findAllByCheeseName(String cheeseName){
         return recipeDAO.findAllByCheeseName(cheeseName);
     }
+
+    public void delete(Recipe recipe){
+        recipeDAO.delete(recipe);
+    }
 }
