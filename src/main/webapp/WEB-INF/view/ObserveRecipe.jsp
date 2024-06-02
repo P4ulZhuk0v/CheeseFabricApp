@@ -26,13 +26,9 @@
     </table>
 </c:forEach>
 
-<form method="post" action="add-recipe">
-    <input type="submit" value="Add recipe">
-</form>
+<button onclick="window.location.href='/recipes/add-recipe'">Добавить рецепт</button>
 
-<form method="post" action="delete-recipe">
-    <input type="submit" value="Delete recipe">
-</form>
+<button onclick="window.location.href='/recipes/delete-recipe'">Удалить рецепт</button>
 
 
 </body>

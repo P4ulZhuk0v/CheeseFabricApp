@@ -26,7 +26,6 @@
 
         <c:forEach var="myCheese" items="${cheese}">
             <tr>
-<%--Убрать возможность ввода цены напрямую, так как она будет вычисляться чарез markup--%>
                 <td>${myCheese.id}</td>
                 <td>${myCheese.cheeseName}</td>
                 <td>${myCheese.price}</td>
@@ -39,9 +38,7 @@
         </c:forEach>
         </tbody>
     </table>
-    <form method="post" action="add-cheese">
-        <input type="submit" value="Produce cheese">
-    </form>
+    <button onclick="window.location.href='/shop/add-cheese'">Произвести сыр</button>
 </div>
 <hr>
 <div>
@@ -71,9 +68,7 @@
         </c:forEach>
         </tbody>
     </table>
-    <form method="post" action="add-material">
-        <input type="submit" value="Buy material">
-    </form>
+    <button onclick="window.location.href='/shop/add-material'">Принять сырье</button>
 </div>
 <hr>
 <div>
@@ -98,13 +93,11 @@
         </c:forEach>
         </tbody>
     </table>
-    <form method="post" action="add-sell">
-        <input type="submit" value="Sell">
-    </form>  <br>
+    <button onclick="window.location.href='/shop/add-sell'">Продать сыр</button>
 </div>
 <hr>
-<form method="post" action="observe-recipes">
-    <input type="submit" value="Observe">
-</form>
+<button onclick="window.location.href='/shop/observe-recipes'">Рецепты</button><hr>
+
+<button onclick="window.location.href='/logout'">Выйти</button>
 </body>
 </html>

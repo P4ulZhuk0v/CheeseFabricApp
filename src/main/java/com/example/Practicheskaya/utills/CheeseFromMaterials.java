@@ -26,7 +26,6 @@ public class CheeseFromMaterials {
         for(Recipe recipe: recipes){
             materialsRequired.put(recipe.getMaterialName(), recipe.getAmountOfMaterialRequired()*amount);
         }
-        System.out.println(materialsRequired);
         return materialsRequired;
     }
 

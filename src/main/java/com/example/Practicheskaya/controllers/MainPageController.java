@@ -7,6 +7,7 @@ import com.example.Practicheskaya.service.CheeseService;
 import com.example.Practicheskaya.service.MaterialsService;
 import com.example.Practicheskaya.service.SellsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,22 +45,22 @@ public class MainPageController {
     }
 
 
-    @PostMapping("/add-cheese")
+    @GetMapping("/add-cheese")
     public RedirectView produceCheese(){
         return new RedirectView("/cheese/add-cheese");
     }
 
-    @PostMapping("/add-material")
+    @GetMapping("/add-material")
     public RedirectView buyMaterial(){
         return new RedirectView("/materials/add-material");
     }
 
-    @PostMapping("/add-sell")
+    @GetMapping("/add-sell")
     public RedirectView sell(){
         return new RedirectView("/sells/add-sell");
     }
 
-    @PostMapping("/observe-recipes")
+    @GetMapping("/observe-recipes")
     public RedirectView observeRecipes(){
         return new RedirectView("/recipes/observe-recipes");
     }

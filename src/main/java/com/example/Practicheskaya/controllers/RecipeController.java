@@ -5,14 +5,13 @@ import com.example.Practicheskaya.service.CheeseService;
 import com.example.Practicheskaya.service.MaterialsService;
 import com.example.Practicheskaya.service.RecipeService;
 import com.example.Practicheskaya.utills.RecipeDeleter;
+import jakarta.annotation.Nullable;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/recipes")
@@ -31,7 +30,7 @@ public class RecipeController {
     @Autowired
     private RecipeDeleter recipeDeleter;
 
-    @RequestMapping("/add-recipe")
+    @GetMapping("/add-recipe")
     public String addRecipe(Model model){
         model.addAttribute("recipe", new Recipe());
         model.addAttribute("materialsNames", materialsService.getMaterialsNames());
@@ -57,7 +56,7 @@ public class RecipeController {
         return "redirect:/shop/stats";
     }
 
-    @RequestMapping("/observe-recipes")
+    @GetMapping("/observe-recipes")
     public String observeResipe(Model model){
         model.addAttribute("cheeseNames", recipeService.getAvailibleRecipesNames());
         model.addAttribute("recipes", recipeService.findAll());
@@ -65,16 +64,23 @@ public class RecipeController {
     }
 
 
-    @PostMapping("/delete-recipe")
-    public String deleteRecipe(){
+    @GetMapping("/delete-recipe")
+    public String deleteRecipe(Model model){
         return "DeleteRecipe";
     }
 
     @PostMapping("/recipe-deleted")
     public String recipeDeleted(@RequestParam("cheese") String cheeseName, @RequestParam("material") String materialName){
         recipeDeleter.deleteRecipe(cheeseName, materialName);
-        return "redirect:/recipes/observe-recipes";
+        return "redirect:/shop/stats";
     }
+
+//    @PostMapping("/recipe-deleted")
+//    public String recipeDeleted(@RequestParam("cheese") String cheeseName, @RequestParam("material") String materialName){
+//        System.out.println(1);
+//        recipeDeleter.deleteRecipe(cheeseName, materialName);
+//        return "redirect:/shop/stats";
+//    }
 
 
 
