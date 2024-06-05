@@ -7,10 +7,10 @@
 <body>
 <h1>Please, enter a data u want to save about cheese</h1>
 
-<form:form action="sell-added" method="post" modelAttribute="sell">
-    Cheese name: <form:select path="cheeseName" items="${cheeseNames}"/><br>
-    Amount of sells: <form:input path="amountOfSells"/><form:errors path="amountOfSells"/><br>
-    <input type="submit" value="Send">
+<form:form action="add-sell" method="post" modelAttribute="sell">
+    Название сыра: <form:select path="cheeseName" items="${cheeseNames}"/><br>
+    Количество продаж в головках: <form:input path="amountOfSells"/><form:errors path="amountOfSells"/><br>
+    <input type="submit" value="Отправить">
 </form:form>
 
 </body>

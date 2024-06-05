@@ -4,8 +4,7 @@ import com.example.Practicheskaya.entity.Recipe;
 import com.example.Practicheskaya.service.CheeseService;
 import com.example.Practicheskaya.service.MaterialsService;
 import com.example.Practicheskaya.service.RecipeService;
-import com.example.Practicheskaya.utills.RecipeDeleter;
-import jakarta.annotation.Nullable;
+import com.example.Practicheskaya.utils.RecipeDeleter;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,9 +36,7 @@ public class RecipeController {
         return "AddRecipe";
     }
 
-
-
-    @PostMapping("/recipe-added")
+    @PostMapping("/add-recipe")
     public String recipeAdded(@Valid @ModelAttribute(name="recipe") Recipe recipe, BindingResult bindingResult, Model model){
         boolean isPresent = false;
         for(Recipe recipe1: recipeService.findAllByCheeseName(recipe.getCheeseName())){
@@ -69,22 +66,9 @@ public class RecipeController {
         return "DeleteRecipe";
     }
 
-    @PostMapping("/recipe-deleted")
+    @PostMapping("/delete-recipe")
     public String recipeDeleted(@RequestParam("cheese") String cheeseName, @RequestParam("material") String materialName){
         recipeDeleter.deleteRecipe(cheeseName, materialName);
         return "redirect:/shop/stats";
     }
-
-//    @PostMapping("/recipe-deleted")
-//    public String recipeDeleted(@RequestParam("cheese") String cheeseName, @RequestParam("material") String materialName){
-//        System.out.println(1);
-//        recipeDeleter.deleteRecipe(cheeseName, materialName);
-//        return "redirect:/shop/stats";
-//    }
-
-
-
-
-
-
 }

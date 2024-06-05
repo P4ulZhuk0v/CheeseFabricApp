@@ -1,4 +1,4 @@
-package com.example.Practicheskaya.utills;
+package com.example.Practicheskaya.utils;
 
 import com.example.Practicheskaya.exeptions.ConnectionFailedExeption;
 import org.springframework.core.ParameterizedTypeReference;

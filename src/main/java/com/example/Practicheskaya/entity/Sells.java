@@ -1,11 +1,8 @@
 package com.example.Practicheskaya.entity;
 
-import com.example.Practicheskaya.utills.DateParser;
+import com.example.Practicheskaya.utils.DateParser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Pattern;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name="sells")

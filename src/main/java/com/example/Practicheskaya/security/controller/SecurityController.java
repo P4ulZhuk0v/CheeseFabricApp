@@ -1,17 +1,27 @@
 package com.example.Practicheskaya.security.controller;
 
+import com.example.Practicheskaya.security.entity.Role;
 import com.example.Practicheskaya.security.entity.UserDets;
 import com.example.Practicheskaya.security.services.UserService;
+import jakarta.validation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 @Controller
 public class SecurityController {
+
+    private Map<Role, String> roles;
 
     @Autowired
     private UserService userService;
@@ -23,19 +33,29 @@ public class SecurityController {
 
     @GetMapping("/registration")
     public String registration(Model model){
+        roles  = new HashMap<>();
+        roles.put(Role.ROLE_CHEESE_PRODUCER, "Сыровар");
+        roles.put(Role.ROLE_STORAGE_WORKER, "Работник склада");
+        roles.put(Role.ROLE_SELLER, "Работник отдела продаж");
         model.addAttribute("user", new UserDets());
-        model.addAttribute("errorMessage", "");
+        model.addAttribute("rolesMap", roles);
         return "security/registration";
     }
 
 
-    @PostMapping("/perform_registration")
+    @PostMapping("/registration")
     public String performRegistration(@ModelAttribute(name = "user") UserDets user, Model model){
-        if(userService.findAllByPhoneNumber(user.getPhoneNumber()) != null){
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+        Set<ConstraintViolation<UserDets>> violations = validator.validate(user);
+
+        if(!violations.isEmpty() || userService.findAllByPhoneNumber(user.getPhoneNumber()) != null){
             model.addAttribute("user", new UserDets());
-            return "redirect:/registration";
+            model.addAttribute("rolesMap", roles);
+            return "security/registration";
         }
         userService.createUser(user);
+        factory.close();
         return "redirect:/login";
     }
 

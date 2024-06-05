@@ -5,13 +5,13 @@
     <title>Add cheese</title>
 </head>
 <body>
-<h1>Please, enter a data u want to save about cheese</h1>
+<h1>Введите данные о произведенном сыре</h1>
 
-<form:form action="cheese-added" method="post" modelAttribute="cheese">
-    Cheese name: <form:select path="cheeseName" items="${recipes}"/><br>
-    Cheese amount: <form:input path="amount"/><form:errors path="amount"/><br>
-    Cheese markup: <form:input path="markUp"/><form:errors path="markUp"/><br>
-    <input type="submit" value="Send">
+<form:form action="add-cheese" method="post" modelAttribute="cheese">
+    Название сыра: <form:select path="cheeseName" items="${recipes}"/><br>
+    Количество в головках: <form:input path="amount"/><form:errors path="amount"/><br>
+    Наценка: <form:input path="markUp"/><form:errors path="markUp"/><br>
+    <input type="submit" value="Отправить">
 </form:form>
 </body>
 </html>

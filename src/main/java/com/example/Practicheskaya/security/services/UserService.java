@@ -22,7 +22,7 @@ public class UserService {
         }
         userDets.setPassword(encoder.encode(userDets.getPassword()));
         userDets.setActive(true);
-        userDets.getRoles().add(Role.ROLE_USER);
+//        userDets.getRoles().add(Role.ROLE_USER);
         userDAO.save(userDets);
         return true;
     }

@@ -1,7 +1,7 @@
 package com.example.Practicheskaya;
 
-import com.example.Practicheskaya.utills.MyRestClient;
-import com.example.Practicheskaya.utills.DateParser;
+import com.example.Practicheskaya.utils.MyRestClient;
+import com.example.Practicheskaya.utils.DateParser;
 import org.junit.jupiter.api.Test;
 
 public class MyRestClientTest {

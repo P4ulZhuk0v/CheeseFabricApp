@@ -1,6 +1,7 @@
 package com.example.Practicheskaya.security.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -18,6 +19,7 @@ public class UserDets implements UserDetails {
     private Long id;
 
     @Column(name = "phone_number")
+    @Pattern(regexp = "\\+7(-\\d{3}){2}(-(\\d){2}){2}", message = "Введите телефон в формате: +7-XXX-XXX-XX-XX")
     private String phoneNumber;
 
     @Column(name = "password")
@@ -29,8 +31,9 @@ public class UserDets implements UserDetails {
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(value = EnumType.STRING)
-    @Column(name = "role_id")
     private Set<Role> roles = new HashSet<>();
+
+    private String section;
 
     public UserDets() {
     }

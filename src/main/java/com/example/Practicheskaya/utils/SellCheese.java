@@ -1,9 +1,9 @@
-package com.example.Practicheskaya.utills;
+package com.example.Practicheskaya.utils;
 
 import com.example.Practicheskaya.entity.Cheese;
 import com.example.Practicheskaya.service.CheeseService;
-import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

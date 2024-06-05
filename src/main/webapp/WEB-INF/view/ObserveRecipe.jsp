@@ -5,15 +5,15 @@
     <title>Observe Recipe</title>
 </head>
 <body>
-<h1>Observe cheese's recipes
+<h1>Обзор существующих рецептов
 </h1>
 
 <c:forEach var="name" items="${cheeseNames}">
     <table>
         <tbody>
-        <h3>Cheese Name: ${name}</h3>
-        <th>Name:</th>
-        <th>Amount:</th>
+        <h3>Название сыра: ${name}</h3>
+        <th>Компонент:</th>
+        <th>Количество:</th>
             <c:forEach var="recipe" items="${recipes}">
         <tr>
                 <c:if test="${recipe.cheeseName == name}">

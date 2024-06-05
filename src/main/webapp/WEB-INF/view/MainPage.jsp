@@ -7,21 +7,21 @@
 </head>
 <body>
 <div>
-    <h1>Here u can observe some resources of your shop</h1>
+    <h1>Данные магазина</h1>
     <hr>
 </div>
 <div>
-    <h3>Cheese</h3>
+    <h3>Сыры</h3>
     <table class="cheese">
         <tbody>
         <tr>
             <th>Id:                </th>
-            <th>Name:              </th>
-            <th>Price:             </th>
-            <th>Markup percentage: </th>
-            <th>Markup price:      </th>
-            <th>Amount:            </th>
-            <th>Date:              </th>
+            <th>Название:              </th>
+            <th>Себестоимость(за 1 головку):             </th>
+            <th>Наценка(в %): </th>
+            <th>Цена с наценкой(за 1 головку):      </th>
+            <th>Количество(в головках):            </th>
+            <th>Дата производства:              </th>
         </tr>
 
         <c:forEach var="myCheese" items="${cheese}">
@@ -43,17 +43,17 @@
 <hr>
 <div>
 
-    <h3>Materials</h3>
+    <h3>Сырье</h3>
     <table class="mymaterials">
         <tbody>
         <tr>
             <th>Id: </th>
-            <th>Name:</th>
-            <th>Buy price:</th>
-            <th>Currency name: </th>
-            <th>Rub price: </th>
-            <th>Amount left:</th>
-            <th>Date:</th>
+            <th>Название:</th>
+            <th>Цена закупки(за 1 ед.):</th>
+            <th>Валюта: </th>
+            <th>Цена в рублях(за 1 ед.): </th>
+            <th>Количество на складе:</th>
+            <th>Дата получения:</th>
         </tr>
         <c:forEach var="material" items="${materials}">
             <tr>
@@ -72,15 +72,15 @@
 </div>
 <hr>
 <div>
-    <h3>Sells</h3>
+    <h3>Продажи</h3>
     <table class="mysells">
         <tbody>
         <tr>
             <th>Id: </th>
-            <th>Name:</th>
-            <th>Amount of sells:</th>
-            <th>Price: </th>
-            <th>Date: </th>
+            <th>Название сыра:</th>
+            <th>Количество проданных головок:</th>
+            <th>Цена(за 1 головку): </th>
+            <th>Дата: </th>
         </tr>
         <c:forEach var="sell" items="${sells}">
             <tr>

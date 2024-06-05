@@ -6,15 +6,15 @@
 </head>
 <body>
 
-<h1>Please, enter a data u want to save about material</h1>
+<h1>Введите данные о принятом на склад сырье</h1>
 
-<form:form action="material-added" method="post" modelAttribute="material">
-    Material name: <form:input path="name"/><form:errors path="name"/><br>
-    Material price: <form:input path="price"/><form:errors path="price"/><br>
-    Price currency: <form:select path="currencyName" items="${currencies}">
+<form:form action="add-material" method="post" modelAttribute="material">
+    Название сырья: <form:input path="name"/><form:errors path="name"/><br>
+    Цена за единицу сырья(кг, л, т.д.): <form:input path="price"/><form:errors path="price"/><br>
+    Валюта: <form:select path="currencyName" items="${currencies}">
     </form:select><br>
-    Material amount: <form:input path="amount"/><form:errors path="amount"/><br>
-    <input type="submit" value="Send">
+    Количество единиц: <form:input path="amount"/><form:errors path="amount"/><br>
+    <input type="submit" value="Отправить">
 </form:form>
 </body>
 </html>

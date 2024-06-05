@@ -3,17 +3,14 @@ package com.example.Practicheskaya.controllers;
 import com.example.Practicheskaya.entity.Cheese;
 import com.example.Practicheskaya.service.CheeseService;
 import com.example.Practicheskaya.service.RecipeService;
-import com.example.Practicheskaya.utills.CheeseFromMaterials;
-import com.example.Practicheskaya.utills.MarkUpMaker;
+import com.example.Practicheskaya.utils.CheeseFromMaterials;
+import com.example.Practicheskaya.utils.MarkUpMaker;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
-
-import java.util.Arrays;
 
 @RequestMapping("/cheese")
 @Controller
@@ -30,14 +27,14 @@ public class CheeseController {
 
     @Autowired
     private MarkUpMaker markUpMaker;
-    @RequestMapping("/add-cheese")
+    @GetMapping("/add-cheese")
     public String addCheese(Model model){
         model.addAttribute("recipes", recipeService.getAvailibleRecipesNames());
         model.addAttribute("cheese", new Cheese());
         return "AddCheesePage";
     }
 
-    @PostMapping("/cheese-added")
+    @PostMapping("/add-cheese")
     public String redirectOnMainPage(@Valid @ModelAttribute(name="cheese") Cheese cheese, BindingResult bindingResult, Model model){
         double rub_price;
         if(bindingResult.hasErrors()||(rub_price = cheeseFromMaterials.produceCheeseFromMaterials(cheese.getCheeseName(), cheese.getAmount()))==0){

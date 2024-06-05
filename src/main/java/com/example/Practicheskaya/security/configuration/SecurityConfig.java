@@ -28,6 +28,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth->
                         auth.requestMatchers("/WEB-INF/view/**", "/registration", "/perform_registration")
                                 .permitAll()
+                                .requestMatchers("/cheese/**").hasAnyRole("CHEESE_PRODUCER", "ADMIN")
+                                .requestMatchers("/materials/**").hasAnyRole("STORAGE_WORKER", "ADMIN")
+                                .requestMatchers("/sells/**").hasAnyRole("SELLER", "ADMIN")
+                                .requestMatchers("/recipes/**").hasAnyRole("ADMIN")
                                 .anyRequest().
                                 authenticated()
                 ).formLogin(login->
