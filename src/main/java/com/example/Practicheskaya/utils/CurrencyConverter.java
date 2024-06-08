@@ -14,7 +14,12 @@ public class CurrencyConverter {
     public Material parseCurrencyInMaterial(Material material){
         String currencyName = material.getCurrencyName();
         int price = material.getPrice();
-        Double course = myRestClient.getConnection(DateParser.getLocalDate()).findOnSiteByPattern().get(currencyName);
+        Double course;
+        if(myRestClient.getMatches() != null){
+            course = myRestClient.getMatches().get(currencyName);
+        } else{
+            course = myRestClient.getConnection(DateParser.getLocalDate()).findOnSiteByPattern().get(currencyName);
+        }
         material.setRub_price(course * price);//rub price - is price for 1 unit
         return material;
     }

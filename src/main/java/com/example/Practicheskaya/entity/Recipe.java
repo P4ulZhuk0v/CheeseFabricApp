@@ -27,6 +27,7 @@ public class Recipe {
     @Min(value = 1, message = "Введите положительное целое число")
     private int amountOfMaterialRequired;
 
+
     public Recipe() {}
 
     public String getCheeseName() {

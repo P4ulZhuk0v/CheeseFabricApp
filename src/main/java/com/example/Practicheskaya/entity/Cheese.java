@@ -1,5 +1,6 @@
 package com.example.Practicheskaya.entity;
 
+import com.example.Practicheskaya.utils.CurrentSessionGetter;
 import com.example.Practicheskaya.utils.DateParser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -35,11 +36,14 @@ public class Cheese {
     @Column(name="date")
     private String dateOfProducing;
 
+    @Column(name="action_performer_number")
+    private String action_performer_number;
 
     public Cheese(){}
 
     @PrePersist
-    public void getDate(){
+    public void prepersist(){
+        action_performer_number = CurrentSessionGetter.getCurrentSession().getPhoneNumber();
         dateOfProducing = DateParser.getLocalDate();
     }
 
@@ -97,4 +101,11 @@ public class Cheese {
     }
 
 
+    public String getAction_performer_number() {
+        return action_performer_number;
+    }
+
+    public void setAction_performer_number(String action_performer_number) {
+        this.action_performer_number = action_performer_number;
+    }
 }

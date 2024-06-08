@@ -22,6 +22,8 @@
             <th>Цена с наценкой(за 1 головку):      </th>
             <th>Количество(в головках):            </th>
             <th>Дата производства:              </th>
+            <th>Номер подчиненного:              </th>
+
         </tr>
 
         <c:forEach var="myCheese" items="${cheese}">
@@ -33,6 +35,7 @@
                 <td>${myCheese.markUpPrice}</td>
                 <td>${myCheese.amount}</td>
                 <td>${myCheese.dateOfProducing}</td>
+                <td>${myCheese.action_performer_number}</td>
             </tr>
 
         </c:forEach>
@@ -54,6 +57,7 @@
             <th>Цена в рублях(за 1 ед.): </th>
             <th>Количество на складе:</th>
             <th>Дата получения:</th>
+            <th>Номер подчиненного:              </th>
         </tr>
         <c:forEach var="material" items="${materials}">
             <tr>
@@ -64,6 +68,7 @@
                 <td>${material.rub_price}</td>
                 <td>${material.amount}</td>
                 <td>${material.date}</td>
+                <td>${material.action_performer_number}</td>
             </tr>
         </c:forEach>
         </tbody>
@@ -80,7 +85,8 @@
             <th>Название сыра:</th>
             <th>Количество проданных головок:</th>
             <th>Цена(за 1 головку): </th>
-            <th>Дата: </th>
+            <th>Дата продажи: </th>
+            <th>Номер подчиненного:              </th>
         </tr>
         <c:forEach var="sell" items="${sells}">
             <tr>
@@ -89,6 +95,7 @@
                 <td>${sell.amountOfSells}</td>
                 <td>${sell.price}</td>
                 <td>${sell.date}</td>
+                <td>${sell.action_performer_number}</td>
             </tr>
         </c:forEach>
         </tbody>

@@ -1,6 +1,7 @@
 package com.example.Practicheskaya.entity;
 
 
+import com.example.Practicheskaya.utils.CurrentSessionGetter;
 import com.example.Practicheskaya.utils.DateParser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
@@ -36,8 +37,12 @@ public class Material {
     @Min(value = 1, message = "Введите положительное целое число")
     private int amount;
 
+    @Column(name="action_performer_number")
+    private String action_performer_number;
+
     @PrePersist
-    public void persist(){
+    public void prepersist(){
+        action_performer_number = CurrentSessionGetter.getCurrentSession().getPhoneNumber();
         date = DateParser.getLocalDate();
     }
 
@@ -94,5 +99,13 @@ public class Material {
 
     public void setRub_price(Double rub_price) {
         this.rub_price = rub_price;
+    }
+
+    public String getAction_performer_number() {
+        return action_performer_number;
+    }
+
+    public void setAction_performer_number(String action_performer_number) {
+        this.action_performer_number = action_performer_number;
     }
 }

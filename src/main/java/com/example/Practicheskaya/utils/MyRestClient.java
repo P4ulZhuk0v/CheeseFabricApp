@@ -19,7 +19,7 @@ public class MyRestClient {
         return matches;
     }
 
-    private Map<String, Double> matches;
+    private Map<String, Double> matches = null;
     private String body;
 
     //getting connected and recieving html code
@@ -56,6 +56,7 @@ public class MyRestClient {
             double doubleAmount = Double.parseDouble(amount);
             matches.put(name, (double) doubleValue/doubleAmount);
         }
+        matches.put("Российский рубль", 1D);
         return matches;
     }
 }

@@ -1,8 +1,10 @@
 package com.example.Practicheskaya.entity;
 
+import com.example.Practicheskaya.utils.CurrentSessionGetter;
 import com.example.Practicheskaya.utils.DateParser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import net.bytebuddy.asm.MemberSubstitution;
 
 @Entity
 @Table(name="sells")
@@ -24,8 +26,12 @@ public class Sells {
     @Column(name = "date")
     private String date;
 
+    @Column(name="action_performer_number")
+    private String action_performer_number;
+
     @PrePersist
-    public void persist(){
+    public void prepersist(){
+        action_performer_number = CurrentSessionGetter.getCurrentSession().getPhoneNumber();
         date = DateParser.getLocalDate();
     }
 
@@ -65,5 +71,13 @@ public class Sells {
     }
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getAction_performer_number() {
+        return action_performer_number;
+    }
+
+    public void setAction_performer_number(String action_performer_number) {
+        this.action_performer_number = action_performer_number;
     }
 }
